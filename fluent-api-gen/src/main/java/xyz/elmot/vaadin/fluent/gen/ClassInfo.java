@@ -18,22 +18,25 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 class ClassInfo {
-    private JavaClassSource parsedClass;
+    private final JavaClassSource srcClass;
+    private final JavaClassSource targetClass;
     private String packageName;
     private File targetDir;
 
-    ClassInfo(JavaClassSource parsedClass, String packageName, File targetDir) {
-        this.parsedClass = parsedClass;
+    ClassInfo(JavaClassSource parsedClass, JavaClassSource targetClass, String packageName, File targetDir) {
+        this.srcClass = parsedClass;
+        this.targetClass = targetClass;
+
         this.packageName = packageName;
         this.targetDir = targetDir;
     }
 
     void processClass(Map<String, ClassInfo> classInfoMap) {
-        parsedClass.setPackage(packageName);
-        parsedClass.setAbstract(false);
+        targetClass.setPackage(packageName);
+        targetClass.setAbstract(false);
 
 
-        List<MethodSource<JavaClassSource>> methods = parsedClass.getMethods();
+        List<MethodSource<JavaClassSource>> methods = targetClass.getMethods();
         for (MethodSource<JavaClassSource> method : methods) {
             if (method.isAbstract()) {
                 generateStandardBody(method);
@@ -41,7 +44,7 @@ class ClassInfo {
                 processFactoryMethod(method);
             } else {
                 if (method.isReturnTypeVoid() && !method.isConstructor()) {
-                    method.setReturnType(parsedClass);
+                    method.setReturnType(targetClass);
                     method.setBody(method.getBody() + "return this;");
                 }
             }
@@ -49,25 +52,25 @@ class ClassInfo {
 
         copySuperClassParts(classInfoMap);
 
-        parsedClass.removeImport(FactoryMethod.class);
-        parsedClass.removeImport(ForcedImport.class);
-        AnnotationSource<JavaClassSource> uselessAnnotation = parsedClass.getAnnotation(ForcedImport.class);
+        targetClass.removeImport(FactoryMethod.class);
+        targetClass.removeImport(ForcedImport.class);
+        AnnotationSource<JavaClassSource> uselessAnnotation = targetClass.getAnnotation(ForcedImport.class);
         if (uselessAnnotation != null) {
-            parsedClass.removeAnnotation(uselessAnnotation);
+            targetClass.removeAnnotation(uselessAnnotation);
         }
 
-        for (Import anImport : parsedClass.getImports()) {
+        for (Import anImport : targetClass.getImports()) {
             ClassInfo classInfo = classInfoMap.get(anImport.getQualifiedName());
             if (classInfo != null) {
-                anImport.setName(classInfo.packageName + "." + classInfo.parsedClass.getName());
+                anImport.setName(classInfo.packageName + "." + classInfo.targetClass.getName());
             }
         }
 
         //noinspection ResultOfMethodCallIgnored
         targetDir.mkdirs();
-        File targetFile = new File(targetDir, parsedClass.getName() + ".java");
+        File targetFile = new File(targetDir, targetClass.getName() + ".java");
         try (OutputStreamWriter writer = new OutputStreamWriter(new BufferedOutputStream(new FileOutputStream(targetFile)), StandardCharsets.UTF_8)) {
-            writer.write(Roaster.format(parsedClass.toString()));
+            writer.write(Roaster.format(targetClass.toString()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -76,23 +79,24 @@ class ClassInfo {
     }
 
     private void copySuperClassParts(Map<String, ClassInfo> classInfoMap) {
-        for (String parent = strippedSuperType(parsedClass); classInfoMap.containsKey(parent); ) {
+        for (String parent = strippedSuperType(srcClass); classInfoMap.containsKey(parent); ) {
             ClassInfo superClass = classInfoMap.get(parent);
-            for (Import anImport : superClass.parsedClass.getImports()) {
+            for (Import anImport : superClass.srcClass.getImports()) {
                 if(anImport.getQualifiedName().startsWith("com.vaadin."))
-                parsedClass.addImport(anImport);
+                targetClass.addImport(anImport);
             }
-            List<MethodSource<JavaClassSource>> superMetods = superClass.parsedClass.getMethods();
+            List<MethodSource<JavaClassSource>> superMetods = superClass.srcClass.getMethods();
             for (MethodSource<JavaClassSource> superMetod : superMetods) {
                 if (!superMetod.isStatic() && !superMetod.isConstructor()
-                        && superClass.parsedClass.getName().equals(superMetod.getReturnType().getName())
+                        && (superClass.srcClass.getName().equals(superMetod.getReturnType().getName()) ||
+                        superMetod.isReturnTypeVoid())
                         ) {
 
-                    MethodSource<JavaClassSource> overriddenMethod = parsedClass.addMethod(superMetod);
+                    MethodSource<JavaClassSource> overriddenMethod = targetClass.addMethod(superMetod);
                     if (!overriddenMethod.hasAnnotation(Override.class)) {
                         overriddenMethod.addAnnotation(Override.class);
                     }
-                    overriddenMethod.setReturnType(parsedClass);
+                    overriddenMethod.setReturnType(targetClass);
                     StringBuilder body = new StringBuilder("super.").append(overriddenMethod.getName());
                     convertParametersToCall(superMetod, body);
                     body.append("return this;");
@@ -100,7 +104,7 @@ class ClassInfo {
                 }
             }
 
-            parent = strippedSuperType(superClass.parsedClass);
+            parent = strippedSuperType(superClass.srcClass);
         }
     }
 
@@ -116,7 +120,7 @@ class ClassInfo {
         body.append(methodName.substring(1));
         convertParametersToCall(method, body);
         body.append("return this;");
-        method.setReturnType(parsedClass);
+        method.setReturnType(targetClass);
         method.setBody(body.toString());
     }
 
@@ -139,10 +143,10 @@ class ClassInfo {
             if (i != parameters.size() - 1) {
                 body.append(",");
             }
-            if (parsedClass.requiresImport(parameter.getType().getQualifiedName())
+            if (targetClass.requiresImport(parameter.getType().getQualifiedName())
                     && Character.isLowerCase(parameter.getType().getQualifiedName().charAt(0))/* Workaround!!! classes of type Sizeable.Unit are not well-supported*/
                     ) {
-                parsedClass.addImport(parameter.getType().getQualifiedName());
+                targetClass.addImport(parameter.getType().getQualifiedName());
             }
         }
         body.append(");");
@@ -150,6 +154,6 @@ class ClassInfo {
 
     @Override
     public String toString() {
-        return parsedClass == null ? "<none>" : parsedClass.getName();
+        return srcClass == null ? "<none>" : srcClass.getName();
     }
 }

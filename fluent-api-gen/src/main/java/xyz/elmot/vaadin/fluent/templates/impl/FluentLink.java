@@ -1,9 +1,8 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.server.Resource;
 import com.vaadin.shared.ui.BorderStyle;
 import com.vaadin.ui.Link;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 public abstract class FluentLink extends FluentComponent<Link> {
 

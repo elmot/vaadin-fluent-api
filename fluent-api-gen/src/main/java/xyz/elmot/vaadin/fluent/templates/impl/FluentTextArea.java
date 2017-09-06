@@ -1,8 +1,7 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.data.HasValue;
 import com.vaadin.ui.TextArea;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 public abstract class FluentTextArea extends FluentComponent<TextArea> {
 

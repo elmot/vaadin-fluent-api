@@ -1,4 +1,4 @@
-package xyz.elmot.vaadin.fluent.templates;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.server.ErrorMessage;
 import com.vaadin.server.Resource;
@@ -6,99 +6,17 @@ import com.vaadin.server.Sizeable;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.AbstractComponent;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.VerticalLayout;
-import xyz.elmot.vaadin.fluent.gen.FactoryMethod;
-import xyz.elmot.vaadin.fluent.templates.internal.FluentCheckBox;
-import xyz.elmot.vaadin.fluent.templates.internal.FluentImage;
-import xyz.elmot.vaadin.fluent.templates.internal.FluentLink;
-import xyz.elmot.vaadin.fluent.templates.internal.FluentOrderedLayout;
-import xyz.elmot.vaadin.fluent.templates.internal.FluentPanel;
-import xyz.elmot.vaadin.fluent.templates.internal.FluentTextArea;
 
 import java.util.Locale;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class FluentComponent<T extends AbstractComponent> implements Supplier<T> {
 
     protected final T component;
 
-    protected FluentComponent(final T component) {
+    public FluentComponent(final T component) {
         this.component = component;
     }
-
-    @FactoryMethod
-    public static FluentPanel panel() {
-        return null;
-    }
-
-    @FactoryMethod
-    public static FluentPanel panel(Component component) {
-        return null;
-    }
-
-    public static FluentPanel panel(Supplier<Component> componentSupplier) {
-        return panel(componentSupplier.get());
-    }
-
-    @FactoryMethod
-    public static FluentLink link() {
-        return null;
-    }
-
-    @FactoryMethod
-    public static FluentCheckBox checkBox() {
-        return null;
-    }
-
-/*
-    public static FluentTextField textField () { todo
-        return new FluentTextField();
-    }
-*/
-
-    @FactoryMethod
-    public static FluentTextArea textArea () {
-        return null;
-    }
-
-    @FactoryMethod
-    public static FluentImage image() {
-        return null;
-    }
-
-/* todo
-    public static FluentRadioButtonGroup radioButtonGroup() {
-        return new FluentRadioButtonGroup();
-    }
-
-    Datefield todo
-*/
-
-    public static <T extends AbstractComponent> FluentComponent<T> use(final T component) {
-        return new FluentComponent<>(component);
-    }
-
-    public static <T extends AbstractComponent> FluentComponent<T> $(final Supplier<T> supplier) {
-        return new FluentComponent<>(supplier.get());
-    }
-
-    public static FluentOrderedLayout<VerticalLayout> vLayout() {
-        return new FluentOrderedLayout<>(new VerticalLayout());
-    }
-
-    public static FluentOrderedLayout<HorizontalLayout> hLayout() {
-        return new FluentOrderedLayout<>(new HorizontalLayout());
-    }
-
-/* todo
-    public static FluentMenuBar menuBar() {
-        return new FluentMenuBar();
-    }
-
-*/
 
     @Override
     public T get() {

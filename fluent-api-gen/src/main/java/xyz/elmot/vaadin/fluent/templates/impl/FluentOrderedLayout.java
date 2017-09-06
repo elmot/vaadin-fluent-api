@@ -1,10 +1,9 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.AbstractOrderedLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -20,20 +19,13 @@ public class FluentOrderedLayout<T extends AbstractOrderedLayout> extends Fluent
         return this;
     }
 
-    @SafeVarargs
-    public final FluentOrderedLayout<T> add(Supplier<Component>... components) {
-        for (Supplier<Component> componentSupplier : components) {
-            this.component.addComponent(componentSupplier.get());
-        }
+    public <V extends Component> FluentOrderedLayout<T> add(Stream<V> components) {
+        components.forEach(c->this.component.addComponent(c));
+//        components.forEach(this.component::addComponent);
         return this;
     }
 
-    public FluentOrderedLayout<T> add(Stream<Component> components) {
-        components.forEach(this.component::addComponent);
-        return this;
-    }
-
-    public FluentOrderedLayout<T> add(Supplier<Component> componentSupplier, Alignment alignment) {
+    public <V extends Component> FluentOrderedLayout<T> add(Supplier<V> componentSupplier, Alignment alignment) {
         return add(componentSupplier.get(), alignment);
     }
 
@@ -48,7 +40,7 @@ public class FluentOrderedLayout<T extends AbstractOrderedLayout> extends Fluent
         return this;
     }
 
-    public FluentOrderedLayout<T> add(Supplier<Component> componentSupplier, float ratio) {
+    public FluentOrderedLayout<T> add(Supplier<? extends Component> componentSupplier, float ratio) {
         return add(componentSupplier.get(), ratio);
     }
 
@@ -59,7 +51,7 @@ public class FluentOrderedLayout<T extends AbstractOrderedLayout> extends Fluent
     }
 
 
-    public FluentOrderedLayout<T> add(Supplier<Component> componentSupplier, Alignment alignment, float ratio) {
+    public FluentOrderedLayout<T> add(Supplier<? extends Component> componentSupplier, Alignment alignment, float ratio) {
         return add(componentSupplier.get(), alignment, ratio);
     }
 

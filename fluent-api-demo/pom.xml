@@ -21,24 +21,23 @@
 		<jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
 	</properties>
 
-    <!--
-	<organization>
-		<name>My Name</name>
-		<url>https://github.com/mygithubaccount/MyComponent/</url>
-	</organization>
+    <organization>
+        <name>Ilia Motornyi</name>
+        <url>https://github.com/elmot/vaadin-fluent-api/</url>
+    </organization>
 
-	<scm>
-		<url>git://github.com/mygithubaccount/MyComponent.git</url>
-		<connection>scm:git:git://github.com/mygithubaccount/MyComponent.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${componentClassName}.git</developerConnection>
-		<tag>MyComponent add-on for Vaadin</tag>
-	</scm>
+    <scm>
+        <url>git://github.com/elmot/vaadin-fluent-api.git</url>
+        <connection>scm:git:git://github.com/elmot/vaadin-fluent-api.git
+        </connection>
+        <!--<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${componentClassName}.git</developerConnection>-->
+        <tag>Vaadin Fluent API Add-on</tag>
+    </scm>
 
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/mygithubaccount/MyComponent/issues</url>
-	</issueManagement>
-    -->
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/elmot/vaadin-fluent-api/issues</url>
+    </issueManagement>
 
 	<licenses>
 		<license>
@@ -70,7 +69,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>xyz.elmot.vaadin</groupId>
-			<artifactId>fluent-api</artifactId>
+			<artifactId>fluent-api-addon</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
@@ -79,8 +78,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-client-compiler</artifactId>
-			<scope>provided</scope>
+			<artifactId>vaadin-client-compiled</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.vaadin</groupId>

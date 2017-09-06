@@ -1,7 +1,6 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.ui.Button;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 public abstract class FluentButton extends FluentComponent<Button> {
 

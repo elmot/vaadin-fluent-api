@@ -1,11 +1,10 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.event.MouseEvents;
 import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Panel;
 import xyz.elmot.vaadin.fluent.gen.ForcedImport;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 @ForcedImport(Sizeable.class)
 public abstract class FluentPanel extends FluentComponent<Panel> {

@@ -1,29 +1,37 @@
 package xyz.elmot.vaadin.demo;
 
-import javax.servlet.annotation.WebServlet;
-
-import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
+import xyz.elmot.vaadin.fluent.Fluent;
 
-@Title("MyComponent Add-on Demo")
+import javax.servlet.annotation.WebServlet;
+
+@Title("Vaadin Fluent Api Add-on Demo")
 @SuppressWarnings("serial")
-public class DemoUI extends UI
-{
+public class DemoUI extends UI {
+
+    @Override
+    protected void init(VaadinRequest request) {
+        setContent(
+                Fluent.vLayout().add(
+                        Fluent.label()
+                                .value("Styled label")
+                                .styles(ValoTheme.LABEL_HUGE, ValoTheme.LABEL_COLORED)
+                                .get(),
+                        Fluent.textArea()
+                                .readOnly(true)
+                                .value("Some text")
+                                .get()
+                ).get()
+        );
+    }
 
     @WebServlet(value = "/*", asyncSupported = true)
     @VaadinServletConfiguration(productionMode = false, ui = DemoUI.class)
     public static class Servlet extends VaadinServlet {
-    }
-
-    @Override
-    protected void init(VaadinRequest request) {
-
-        // Initialize our new UI component
     }
 }

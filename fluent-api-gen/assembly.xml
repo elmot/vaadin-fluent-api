@@ -1,0 +1,33 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd
+http://maven.apache.org/ASSEMBLY/2.0.0 ">
+    <id>generated-src</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <outputDirectory>.</outputDirectory>
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <excludes>
+                <exclude>**/test/**/*</exclude>
+                <exclude>**/test/</exclude>
+            </excludes>
+            <!--
+                        <useDefaultExcludes/>
+                        <outputDirectory/>
+                        <includes/>
+                        <excludes/>
+                        <fileMode/>
+                        <directoryMode/>
+                        <directory/>
+            -->
+        </fileSet>
+    </fileSets>
+    <componentDescriptors/>
+</assembly>

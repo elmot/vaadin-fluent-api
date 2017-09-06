@@ -1,8 +1,7 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.data.HasValue;
 import com.vaadin.ui.CheckBox;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 public abstract class FluentCheckBox extends FluentComponent<CheckBox> {
 

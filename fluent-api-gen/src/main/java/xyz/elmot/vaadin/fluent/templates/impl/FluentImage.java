@@ -1,9 +1,8 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.event.MouseEvents;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Image;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 public abstract class FluentImage extends FluentComponent<Image> {
 

@@ -1,8 +1,7 @@
-package xyz.elmot.vaadin.fluent.templates.internal;
+package xyz.elmot.vaadin.fluent.templates.impl;
 
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.Label;
-import xyz.elmot.vaadin.fluent.templates.FluentComponent;
 
 public abstract class FluentLabel extends FluentComponent<Label> {
 
