@@ -9,8 +9,8 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import org.junit.Test;
-import org.vaadin.addon.elmot.fluent.fluent.Fluent;
-import org.vaadin.addon.elmot.fluent.fluent.impl.FluentOrderedLayout;
+import org.vaadin.addon.elmot.fluent.Fluent;
+import org.vaadin.addon.elmot.fluent.impl.FluentOrderedLayout;
 
 import java.util.List;
 import java.util.stream.Collectors;

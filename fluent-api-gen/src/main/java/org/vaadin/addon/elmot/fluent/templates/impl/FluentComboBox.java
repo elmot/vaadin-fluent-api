@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 public abstract class FluentComboBox<ITEM> extends FluentComponent<ComboBox<ITEM>> {
 
     public FluentComboBox() {
-        super(new ComboBox<ITEM>());
+        super(new ComboBox<>());
     }
 
     public abstract void value(ITEM value);
@@ -34,12 +34,14 @@ public abstract class FluentComboBox<ITEM> extends FluentComponent<ComboBox<ITEM
 
     public abstract void items(Stream<ITEM> streamOfItems);
 
-    public abstract void items(ITEM... items);
+    @SuppressWarnings("unchecked")
+    public abstract void items(final ITEM... items);
 
     public abstract void dataProvider(ListDataProvider<ITEM> listDataProvider);
 
     public abstract void dataProvider(ComboBox.CaptionFilter captionFilter, ListDataProvider<ITEM> listDataProvider);
 
+    @SuppressWarnings("unchecked")
     public abstract void items(ComboBox.CaptionFilter captionFilter, @SuppressWarnings("unchecked") ITEM... items);
 
     public abstract void placeholder(String placeholder);

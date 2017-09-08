@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Generator {
 
-    private static final String TARGET_PACKAGE = "org.vaadin.addon.elmot.fluent.fluent";
+    private static final String TARGET_PACKAGE = "org.vaadin.addon.elmot.fluent";
     private static final String SRC_PATH = "src/main/java/org/vaadin/addon/elmot/fluent/templates";
     private static final String TARGET_PATH = "src/test/java";
     private static Map<String, ClassInfo> classes = new HashMap<>();

@@ -82,15 +82,16 @@ class ClassInfo {
         for (String parent = strippedSuperType(srcClass); classInfoMap.containsKey(parent); ) {
             ClassInfo superClass = classInfoMap.get(parent);
             for (Import anImport : superClass.srcClass.getImports()) {
-                if(anImport.getQualifiedName().startsWith("com.vaadin."))
-                targetClass.addImport(anImport);
+                if (anImport.getQualifiedName().startsWith("com.vaadin."))
+                    targetClass.addImport(anImport);
             }
             List<MethodSource<JavaClassSource>> superMetods = superClass.srcClass.getMethods();
             for (MethodSource<JavaClassSource> superMetod : superMetods) {
                 if (!superMetod.isStatic() && !superMetod.isConstructor()
                         && (superClass.srcClass.getName().equals(superMetod.getReturnType().getName()) ||
                         superMetod.isReturnTypeVoid())
-                        ) {
+                                && !"setup".equals(superMetod.getName()))
+                         {
 
                     MethodSource<JavaClassSource> overriddenMethod = targetClass.addMethod(superMetod);
                     if (!overriddenMethod.hasAnnotation(Override.class)) {

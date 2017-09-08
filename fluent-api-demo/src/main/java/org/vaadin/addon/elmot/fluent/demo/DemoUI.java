@@ -6,7 +6,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
-import org.vaadin.addon.elmot.fluent.fluent.Fluent;
+import org.vaadin.addon.elmot.fluent.Fluent;
 
 import javax.servlet.annotation.WebServlet;
 

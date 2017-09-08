@@ -8,6 +8,7 @@ import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.AbstractComponent;
 
 import java.util.Locale;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 @SuppressWarnings({"unused", "WeakerAccess", "UnusedReturnValue"})
@@ -22,6 +23,11 @@ public class FluentComponent<T extends AbstractComponent> implements Supplier<T>
     @Override
     public T get() {
         return component;
+    }
+
+    public FluentComponent<? extends T> setup(Consumer<T> setupCode) {
+        setupCode.accept(component);
+        return this;
     }
 
     public void id(String id) {
