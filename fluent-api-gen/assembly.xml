@@ -17,16 +17,9 @@ http://maven.apache.org/ASSEMBLY/2.0.0 ">
             <excludes>
                 <exclude>**/test/**/*</exclude>
                 <exclude>**/test/</exclude>
+                <exclude>**/fluenttest/**/*</exclude>
+                <exclude>**/fluenttest/</exclude>
             </excludes>
-            <!--
-                        <useDefaultExcludes/>
-                        <outputDirectory/>
-                        <includes/>
-                        <excludes/>
-                        <fileMode/>
-                        <directoryMode/>
-                        <directory/>
-            -->
         </fileSet>
     </fileSets>
     <componentDescriptors/>
