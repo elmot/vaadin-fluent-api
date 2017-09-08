@@ -199,4 +199,5 @@ public class FluentCheckBox extends FluentComponent<CheckBox> {
 		super.heightUndefined();
 		return this;
 	}
+
 }

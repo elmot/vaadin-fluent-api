@@ -6,6 +6,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import xyz.elmot.vaadin.fluent.gen.FactoryMethod;
 import xyz.elmot.vaadin.fluent.templates.impl.FluentCheckBox;
+import xyz.elmot.vaadin.fluent.templates.impl.FluentComboBox;
 import xyz.elmot.vaadin.fluent.templates.impl.FluentComponent;
 import xyz.elmot.vaadin.fluent.templates.impl.FluentDateField;
 import xyz.elmot.vaadin.fluent.templates.impl.FluentDateTimeField;
@@ -33,6 +34,11 @@ public class Fluent{
     @FactoryMethod
 
     public static FluentPanel panel() {
+        return null;
+    }
+
+    @FactoryMethod
+    public static FluentComboBox comboBox() {
         return null;
     }
 

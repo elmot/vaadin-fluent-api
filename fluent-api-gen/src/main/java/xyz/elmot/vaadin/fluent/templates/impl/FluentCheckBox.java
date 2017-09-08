@@ -18,4 +18,5 @@ public abstract class FluentCheckBox extends FluentComponent<CheckBox> {
     public abstract void   requiredIndicatorVisible(boolean requiredIndicatorVisible);
 
     public abstract void readOnly(boolean readOnly);
+
 }

@@ -5,7 +5,6 @@ import com.vaadin.ui.AbstractOrderedLayout;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Component;
 
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class FluentOrderedLayout<T extends AbstractOrderedLayout> extends FluentComponent<T> {
@@ -14,23 +13,51 @@ public class FluentOrderedLayout<T extends AbstractOrderedLayout> extends Fluent
         super(component);
     }
 
-    public FluentOrderedLayout<T> add(Component... components) {
+    public FluentOrderedLayout<T> addAll(Component... components) {
         this.component.addComponents(components);
         return this;
     }
 
-    public <V extends Component> FluentOrderedLayout<T> add(Stream<V> components) {
-        components.forEach(c->this.component.addComponent(c));
-//        components.forEach(this.component::addComponent);
+    public <V extends Component> FluentOrderedLayout<T> addAll(Stream<V> components) {
+        components.forEach(c->this.component.addComponent(c));//javac bug, do not convert to method ref
         return this;
     }
 
-    public <V extends Component> FluentOrderedLayout<T> add(Supplier<V> componentSupplier, Alignment alignment) {
-        return add(componentSupplier.get(), alignment);
+    public FluentOrderedLayout<T> add(FluentComponent<?> fluentComponent, Alignment alignment) {
+        return add(fluentComponent.get(), alignment);
     }
 
-    private FluentOrderedLayout<T> add(Component childComponent, Alignment alignment) {
+    public FluentOrderedLayout<T> add(Component childComponent, Alignment alignment) {
         this.component.addComponent(childComponent);
+        this.component.setComponentAlignment(childComponent, alignment);
+        return this;
+    }
+
+    public FluentOrderedLayout<T> add(FluentComponent<?> fluentComponent, double ratio) {
+        return add(fluentComponent.get(), ratio);
+    }
+
+    public FluentOrderedLayout<T> addAll(FluentComponent<?> ...fluentComponents) {
+        for (FluentComponent<?> fluentComponent : fluentComponents) {
+            this.component.addComponent(fluentComponent.get());
+        }
+        return this;
+    }
+
+    public FluentOrderedLayout<T> add(Component childComponent, double ratio) {
+        this.component.addComponent(childComponent);
+        this.component.setExpandRatio(childComponent, (float) ratio);
+        return this;
+    }
+
+
+    public FluentOrderedLayout<T> add(FluentComponent<?> fluentComponent, Alignment alignment, double ratio) {
+        return add(fluentComponent.get(), alignment, ratio);
+    }
+
+    public FluentOrderedLayout<T> add(Component childComponent, Alignment alignment, double ratio) {
+        this.component.addComponent(childComponent);
+        this.component.setExpandRatio(childComponent, (float) ratio);
         this.component.setComponentAlignment(childComponent, alignment);
         return this;
     }
@@ -39,29 +66,6 @@ public class FluentOrderedLayout<T extends AbstractOrderedLayout> extends Fluent
         component.setSpacing(spacing);
         return this;
     }
-
-    public FluentOrderedLayout<T> add(Supplier<? extends Component> componentSupplier, float ratio) {
-        return add(componentSupplier.get(), ratio);
-    }
-
-    private FluentOrderedLayout<T> add(Component childComponent, float ratio) {
-        this.component.addComponent(childComponent);
-        this.component.setExpandRatio(childComponent, ratio);
-        return this;
-    }
-
-
-    public FluentOrderedLayout<T> add(Supplier<? extends Component> componentSupplier, Alignment alignment, float ratio) {
-        return add(componentSupplier.get(), alignment, ratio);
-    }
-
-    private FluentOrderedLayout<T> add(Component childComponent, Alignment alignment, float ratio) {
-        this.component.addComponent(childComponent);
-        this.component.setExpandRatio(childComponent, ratio);
-        this.component.setComponentAlignment(childComponent, alignment);
-        return this;
-    }
-
 
     public FluentOrderedLayout<T> margin(boolean enabled) {
         this.component.setMargin(enabled);

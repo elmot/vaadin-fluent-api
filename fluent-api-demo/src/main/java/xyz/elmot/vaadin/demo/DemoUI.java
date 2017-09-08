@@ -17,7 +17,7 @@ public class DemoUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         setContent(
-                Fluent.vLayout().add(
+                Fluent.vLayout().addAll(
                         Fluent.label()
                                 .value("Styled label")
                                 .styles(ValoTheme.LABEL_HUGE, ValoTheme.LABEL_COLORED)

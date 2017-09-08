@@ -6,7 +6,7 @@
     <groupId>xyz.elmot.vaadin</groupId>
     <artifactId>fluent-api-addon</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
     <name>Vaadin Fluent API Add-on</name>
 
     <prerequisites>
@@ -112,7 +112,6 @@
                             <!-- Package format version - do not change -->
                             <Vaadin-Package-Version>1</Vaadin-Package-Version>
 							<Vaadin-License-Title>${Vaadin-License-Title}</Vaadin-License-Title>
-							<Vaadin-Widgetsets>xyz.elmot.vaadin.WidgetSet</Vaadin-Widgetsets>
                         </manifestEntries>
                     </archive>
                 </configuration>

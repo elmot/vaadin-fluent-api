@@ -1,6 +1,6 @@
 # Elmot's Fluent API Add-on for Vaadin 8
 
-TBD
+Yet another Fluent API addon for Vaadin 8. Uses approach with 
 
 ## Download release
 
@@ -17,7 +17,7 @@ To see the demo, navigate to http://localhost:8080/
 
 ## Release notes
 
-### Version 1.0-SNAPSHOT
+### Version 0.1
 TBD
 - ...
 - ...

@@ -5,6 +5,7 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.VerticalLayout;
 import xyz.elmot.vaadin.fluent.impl.FluentCheckBox;
+import xyz.elmot.vaadin.fluent.impl.FluentComboBox;
 import xyz.elmot.vaadin.fluent.impl.FluentComponent;
 import xyz.elmot.vaadin.fluent.impl.FluentDateField;
 import xyz.elmot.vaadin.fluent.impl.FluentDateTimeField;
@@ -30,6 +31,10 @@ public class Fluent {
 	}
 	public static FluentPanel panel() {
 		return new FluentPanel();
+	}
+
+	public static FluentComboBox comboBox() {
+		return new FluentComboBox();
 	}
 
 	public static FluentPanel panel(Component component) {
