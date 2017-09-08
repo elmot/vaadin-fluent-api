@@ -61,11 +61,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>xyz.elmot.vaadin.fluent.gen.Generator</mainClass>
+                    <mainClass>org.vaadin.addon.elmot.fluent.gen.Generator</mainClass>
                     <addOutputToClasspath>true</addOutputToClasspath>
                     <arguments>
                         <argument>--srcPath</argument>
-                        <argument>${project.build.sourceDirectory}/xyz/elmot/vaadin/fluent/templates</argument>
+                        <argument>${project.build.sourceDirectory}/org/vaadin/addon/elmot/fluent/templates</argument>
                         <argument>--targetPath</argument>
                         <argument>${project.build.testSourceDirectory}</argument>
                     </arguments>
