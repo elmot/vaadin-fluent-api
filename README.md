@@ -7,8 +7,8 @@ API looks a bit like [Builder](https://en.wikipedia.org/wiki/Builder_pattern) pa
 Note ```get()``` method in the example.  
 
 I do not see a point in covering all the Vaadin API with fluents but only most 
-used components without complicated settings. Nevertheless, if that is not enough, 
-feel free to [contribute](#contributions).
+used components without complicated settings. 
+Nevertheless, if that is not enough for you, feel free to [contribute](#contributions).
 
 ## Getting started
 
@@ -20,15 +20,17 @@ Label label = Fluent.label()
 ```
 More examples: 
  * [DemoUI.java](fluent-api-demo/src/main/java/org/vaadin/addon/elmot/fluent/demo/DemoUI.java)
- * [TestElements.java](fluent-api-demo/src/test/java/org/vaadin/addon/elmot/fluenttest/TestElements.java)
- * [TestContainer.java](fluent-api-addon/src/main/java/org/vaadin/addon/elmot/fluent/TestContainer.java)
+ * [TestElements.java](fluent-api-gen/src/test/java/org/vaadin/addon/elmot/fluenttest/TestElements.java)
+ * [TestContainer.java](fluent-api-addon/src/test/java/org/vaadin/addon/elmot/fluent/TestContainer.java)
 
 
 
 ## Download release
 
 Official releases of this add-on are available at Vaadin Directory. 
+
 **TODO** finish this
+
 For Maven instructions, download and reviews, go to http://vaadin.com/addon/TODO
 
 ## Building and running demo
