@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("JavaDoc")
 public class TestElements {
     @Test
     public void testPanel() {
@@ -33,9 +34,7 @@ public class TestElements {
 
     @Test
     public void testSetup() {
-        Fluent.$(Grid::new).setup(grid -> {
-            grid.setHeaderVisible(true);
-        });
+        Fluent.$(Grid::new).setup(grid -> grid.setHeaderVisible(true));
     }
 
     @Test
