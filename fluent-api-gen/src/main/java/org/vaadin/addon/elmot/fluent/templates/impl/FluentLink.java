@@ -3,8 +3,10 @@ package org.vaadin.addon.elmot.fluent.templates.impl;
 import com.vaadin.server.Resource;
 import com.vaadin.shared.ui.BorderStyle;
 import com.vaadin.ui.Link;
+import org.vaadin.addon.elmot.fluent.gen.BasedOnVaadinComponent;
 
 @SuppressWarnings({"unused", "WeakerAccess", "UnusedReturnValue"})
+@BasedOnVaadinComponent(Link.class)
 public abstract class FluentLink extends FluentComponent<Link> {
 
     public FluentLink() {

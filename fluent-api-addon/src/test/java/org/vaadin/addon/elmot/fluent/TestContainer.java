@@ -9,7 +9,6 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextArea;
 import com.vaadin.ui.VerticalLayout;
 import org.junit.Test;
-import org.vaadin.addon.elmot.fluent.Fluent;
 import org.vaadin.addon.elmot.fluent.impl.FluentOrderedLayout;
 
 import java.util.List;
@@ -19,6 +18,7 @@ import java.util.stream.Stream;
 
 import static junit.framework.Assert.assertEquals;
 
+@SuppressWarnings("JavaDoc")
 public class TestContainer {
 
     @Test
@@ -33,7 +33,6 @@ public class TestContainer {
                 .add(Fluent.inlineDateTimeField(), Alignment. MIDDLE_LEFT, 0.3)
                 .add(Fluent.inlineDateField().get(), 0.4f)
                 .addAll(Stream.of(Fluent.checkBox().get(), Fluent.vLayout().get()));
-        ;
         VerticalLayout toTest = vLayout.get();
 
         List<Component> addedComponents = IntStream.range(0, toTest.getComponentCount())

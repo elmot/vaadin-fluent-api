@@ -9,11 +9,13 @@ import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.IconGenerator;
 import com.vaadin.ui.ItemCaptionGenerator;
 import com.vaadin.ui.StyleGenerator;
+import org.vaadin.addon.elmot.fluent.gen.BasedOnVaadinComponent;
 
 import java.util.Collection;
 import java.util.stream.Stream;
 
 @SuppressWarnings({"unused", "WeakerAccess", "UnusedReturnValue"})
+@BasedOnVaadinComponent(ComboBox.class)
 public abstract class FluentComboBox<ITEM> extends FluentComponent<ComboBox<ITEM>> {
 
     public FluentComboBox() {
@@ -22,6 +24,11 @@ public abstract class FluentComboBox<ITEM> extends FluentComponent<ComboBox<ITEM
 
     public abstract void value(ITEM value);
 
+    /**
+     * Fluent API for {@link com.vaadin.ui.ComboBox#addValueChangeListener(HasValue.ValueChangeListener)}
+     *
+     * @return self object
+     */
     public void valueChangeListener(HasValue.ValueChangeListener<ITEM> listener) {
         this.component.addValueChangeListener(listener);
     }

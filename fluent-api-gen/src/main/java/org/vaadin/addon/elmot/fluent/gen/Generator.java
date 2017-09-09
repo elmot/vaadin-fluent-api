@@ -49,6 +49,8 @@ public class Generator {
         destFolder.mkdirs();
         runFolder(root, targetPackage, new File(destFolder, targetPackage.replace('.', File.separatorChar)));
         classes.values().forEach(classInfo -> classInfo.processClass(classes));
+        classes.values().forEach(ClassInfo::checkJavadocs);
+        classes.values().forEach(ClassInfo::writeClass);
 
     }
 
