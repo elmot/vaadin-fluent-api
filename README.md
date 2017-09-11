@@ -6,10 +6,6 @@ existing classes but by encapsulating those to outer classes. As a result, the
 API looks a bit like [Builder](https://en.wikipedia.org/wiki/Builder_pattern) pattern. 
 Note ```get()``` method in the example.  
 
-I do not see a point in covering all the Vaadin API with fluents but only most 
-used components without complicated settings. 
-Nevertheless, if that is not enough for you, feel free to [contribute](#contributions).
-
 ## Getting started
 
 ```java
@@ -18,6 +14,13 @@ Label label = Fluent.label()
                         .styles(ValoTheme.LABEL_HUGE, ValoTheme.LABEL_COLORED)
                         .get();
 ```
+I do not see a point in covering all the Vaadin components with fluents but only most 
+used components without complicated settings. Nevertheless, if you need to "fluent" 
+some custom or complicated component, you can do that like here: 
+```java
+Fluent.${new Grid()).setup(grid -> grid.setBeanType(YourBean.class)).id("grid");}}
+```
+If that is not enough for you, feel free to [contribute](#contributions).
 More examples: 
  * [DemoUI.java](fluent-api-demo/src/main/java/org/vaadin/addon/elmot/fluent/demo/DemoUI.java)
  * [TestElements.java](fluent-api-gen/src/test/java/org/vaadin/addon/elmot/fluenttest/TestElements.java)
@@ -66,25 +69,31 @@ Covered:
 
 ## Issue tracking
 
-The issues for this add-on are tracked on its github.com page. All bug reports and feature requests are appreciated. 
+The issues for this add-on are tracked on its github.com page. All bug reports 
+and feature requests are appreciated. 
 
 ## Contributions
 
-Contributions are welcome, but there are no guarantees that they are accepted as such. Process for contributing is the following:
+Contributions are welcome, but there are no guarantees that they are accepted as
+ such. Process for contributing is the following:
 - Fork this project
-- Create an issue to this project about the contribution (bug or feature) if there is no such issue about it already. Try to keep the scope minimal.
-- Develop and test the fix or functionality carefully. Only include minimum amount of code needed to fix the issue.
+- Create an issue to this project about the contribution (bug or feature) if 
+there is no such issue about it already. Try to keep the scope minimal.
+- Develop and test the fix or functionality carefully. Only include minimum 
+amount of code needed to fix the issue.
 - Refer to the fixed issue in commit
 - Send a pull request for the original project
 - Comment on the original issue that you have implemented a fix for it
 
 ## Developer Guide
-Note, the most of the code is automatically generated from java class templates. 
-Do not try to manually change the classes. all of those changes will be lost during build process.
-Return types, some annotations, overriden methods are added automatically. 
-The code is here:
+Note, most of the code is automatically generated from java class templates. 
+Do not try to manually change the result classes. all of those changes will be lost during build process.
+The ``fluent-api-gen`` module contains both code generator code and java template classes:  
 * [The code generator](fluent-api-gen/src/main/java/org/vaadin/addon/elmot/fluent/gen/Generator.java)
 * [The templates](fluent-api-gen/src/main/java/org/vaadin/addon/elmot/fluent/templates/impl) 
+
+Method return types, some annotations, trivial methods implementations, overriden 
+methods are added automatically by the code generator.
 
 ## License & Author
 
