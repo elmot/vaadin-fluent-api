@@ -18,7 +18,7 @@ I do not see a point in covering all the Vaadin components with fluents but only
 used components without complicated settings. Nevertheless, if you need to "fluent" 
 some custom or complicated component, you can do that like here: 
 ```java
-Fluent.${new Grid()).setup(grid -> grid.setBeanType(YourBean.class)).id("grid");}}
+Fluent.${new Grid()).setup(grid -> grid.setBeanType(YourBean.class)).id("grid");
 ```
 If that is not enough for you, feel free to [contribute](#contributions).
 More examples: 

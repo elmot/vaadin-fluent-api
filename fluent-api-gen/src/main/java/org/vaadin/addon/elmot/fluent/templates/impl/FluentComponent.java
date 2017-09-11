@@ -49,7 +49,7 @@ public class FluentComponent<T extends AbstractComponent> implements Supplier<T>
     /**
      * Executes an arbitrary code on the component. Example:<br>
      * <br>
-     * {@code Fluent.${new Grid()).setup(grid -> grid.setbeanType(Bean.class)).id("grid");}}
+     * {@code Fluent.${new Grid()).setup(grid -> grid.setBeanType(YourBean.class)).id("grid");}
      *
      * @param setupCode some code to execute
      */
