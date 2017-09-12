@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>fluent-api-gen</artifactId>
-    <name>Vaadin Fluent API Generator</name>
+    <name>Fluent API Generator</name>
 
     <properties>
         <version.roaster>2.20.1.Final</version.roaster>

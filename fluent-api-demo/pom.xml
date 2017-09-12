@@ -6,7 +6,7 @@
 	<artifactId>fluent-api-demo</artifactId>
 	<packaging>war</packaging>
 	<version>0.1</version>
-	<name>Vaadin Fluent API Demo</name>
+	<name>Fluent API Demo</name>
 
 	<prerequisites>
 		<maven>3</maven>
@@ -31,7 +31,7 @@
         <connection>scm:git:git://github.com/elmot/vaadin-fluent-api.git
         </connection>
         <!--<developerConnection>scm:git:ssh://git@github.com:/mygithubaccount/${componentClassName}.git</developerConnection>-->
-        <tag>Vaadin Fluent API Add-on</tag>
+        <tag>Fluent API Add-on</tag>
     </scm>
 
     <issueManagement>

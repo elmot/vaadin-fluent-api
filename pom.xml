@@ -6,7 +6,7 @@
 	<artifactId>fluent-api-root</artifactId>
 	<packaging>pom</packaging>
 	<version>0.1</version>
-	<name>Vaadin Fluent API Add-on Root Project</name>
+	<name>Fluent API Add-on Root Project</name>
 
 	<prerequisites>
 		<maven>3</maven>
