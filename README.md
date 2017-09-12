@@ -32,9 +32,7 @@ More examples:
 
 Official releases of this add-on are available at Vaadin Directory. 
 
-**TODO** finish this
-
-For Maven instructions, download and reviews, go to http://vaadin.com/addon/TODO
+For Maven instructions, download and reviews, go to https://vaadin.com/directory#!addon/fluent-api-add-on
 
 ## Building and running demo
 ```bash
@@ -100,7 +98,3 @@ methods are added automatically by the code generator.
 Add-on is distributed under Apache License 2.0. For license terms, see LICENSE.txt.
 
 The API is written by Ilia Motornyi aka Elmot, me@elmot.xyz
-
-## API
-**TODO** finish this
-MyComponent JavaDoc is available online at <...>
