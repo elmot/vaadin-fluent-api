@@ -1,3 +1,6 @@
+[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/fluent-api-add-on)
+[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/fluent-api-add-on.svg)](https://vaadin.com/directory/component/fluent-api-add-on)
+
 # Elmot's Fluent API Add-on for Vaadin 8
 
 Yet another [Fluent API](https://en.wikipedia.org/wiki/Fluent_interface) addon 
